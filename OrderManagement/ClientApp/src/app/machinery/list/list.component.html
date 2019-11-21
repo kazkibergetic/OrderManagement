@@ -1,0 +1,56 @@
+<!-- app.component.html -->
+<mat-form-field>
+  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+</mat-form-field>
+<mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+
+
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="id" >
+    <mat-header-cell *matHeaderCellDef> ID. </mat-header-cell>
+    <mat-cell *matCellDef="let element" > {{element.id}} </mat-cell>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="order_num">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Order Number </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.order_num}} </mat-cell>
+  </ng-container>
+
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+<mat-paginator
+  [pageSizeOptions]="[5, 10, 20]"
+  showFirstLastButtons
+></mat-paginator>
+<!--
+<h1 id="tableLabel">Machinery Orders</h1>
+
+
+<p *ngIf="!machineryList"><em>Loading...</em></p>
+<div class="button_add">
+  <button class="btn btn-primary" (click)="incrementCounter()">Add</button>
+</div>
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="machineryList">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Order number</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let machine of machineryList">
+      <td>{{ machine.id }}</td>
+      <td>{{ machine.order_num }}</td>
+      <td><a href="">View</a></td>
+
+    </tr>
+  </tbody>
+</table>
+-->
